@@ -692,6 +692,30 @@ section { padding: 140px 56px; position: relative; }
 </style>
 <style>
 
+
+/* ====== VIDEO GRID + LIGHTBOX ====== */
+#doc-modal .vid-block { margin: 20px 0; border: 1px solid var(--border); background: var(--bg-card); }
+#doc-modal .vid-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; padding: 16px; }
+@media (max-width: 900px) { #doc-modal .vid-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 560px) { #doc-modal .vid-grid { grid-template-columns: repeat(2, 1fr); } }
+#doc-modal .vid-block .cap { padding: 10px 14px; font-size: 12px; color: var(--text-secondary); border-top: 1px solid var(--border); font-family: ui-monospace, SFMono-Regular, monospace; letter-spacing: 0.04em; }
+.vid-card { all: unset; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
+.vid-card .vid-thumb { position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden; border: 1px solid var(--border); background: #000; transition: border-color .2s, transform .2s; }
+.vid-card .vid-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .2s; }
+.vid-card .vid-play { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--accent); color: #000; font-size: 15px; display: flex; align-items: center; justify-content: center; padding-left: 3px; box-sizing: border-box; opacity: 0; transform: scale(.85); transition: opacity .2s, transform .2s; }
+.vid-card .vid-dur { position: absolute; right: 6px; bottom: 6px; padding: 2px 6px; font-size: 11px; font-weight: 700; background: rgba(0,0,0,.7); color: #fff; font-family: ui-monospace, SFMono-Regular, monospace; }
+.vid-card .vid-name { font-size: 12px; line-height: 1.45; color: var(--text-secondary); word-break: keep-all; }
+.vid-card .vid-name b { display: block; color: var(--text-primary); font-weight: 700; }
+.vid-card:hover .vid-thumb, .vid-card:focus-visible .vid-thumb { border-color: var(--accent); transform: translateY(-3px); }
+.vid-card:hover .vid-thumb img { opacity: .7; }
+.vid-card:hover .vid-play, .vid-card:focus-visible .vid-play { opacity: 1; transform: scale(1); }
+@media (hover: none) { .vid-card .vid-play { opacity: .9; transform: scale(1); } }
+#video-lightbox { position: fixed; inset: 0; z-index: 10001; background: rgba(0,0,0,.92); display: none; align-items: center; justify-content: center; padding: 24px; }
+#video-lightbox.open { display: flex; }
+#video-lightbox video { height: min(86vh, 960px); max-width: 100%; aspect-ratio: 9 / 16; background: #000; border: 1px solid var(--border); }
+#video-lightbox .vlb-close { position: fixed; top: 24px; right: 24px; width: 44px; height: 44px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+#video-lightbox .vlb-close:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
 /* ====== DOC MODAL ====== */
 #doc-modal {
   position: fixed; inset: 0; z-index: 9999;
@@ -1744,6 +1768,10 @@ gsap.utils.toArray('section[id]').forEach(sec => {
 </script>
 
 
+<div id="video-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="영상 재생">
+  <button class="vlb-close" type="button" aria-label="영상 닫기">✕</button>
+  <video controls playsinline preload="none"></video>
+</div>
 <div id="doc-modal" role="dialog" aria-modal="true" aria-hidden="true">
   <button class="doc-modal-close" type="button" aria-label="닫기">✕</button>
   <div class="doc-modal-shell" id="doc-modal-shell"></div>
@@ -1898,7 +1926,7 @@ gsap.utils.toArray('section[id]').forEach(sec => {
   <h1 class="doc-title">동영상 편집 자동화</h1>
   <p class="doc-sub">클로드 코드로 꾸린 무료 영상 편집 환경 — 컷 편집·자막부터 모션그래픽까지</p>
 
-  <div class="img-single"><img src="companies/assets/video.jpg" alt="동영상 편집 환경으로 만든 세로형 숏폼 광고 시안 목록"><div class="cap">// 이 환경으로 만든 세로형 숏폼 광고 시안 — A안·B안·혼합안으로 나눠 버전별로 관리</div></div>
+  <div class="vid-block"><div class="vid-grid"><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-ad-v1.mp4" aria-label="헤이데일리 NMNC 광고 v1 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-ad-v1.jpg" alt="헤이데일리 NMNC 광고 v1 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:15</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>광고 v1</span></button><button type="button" class="vid-card" data-video="videos/holy-humberstone-v3.mp4" aria-label="홀리험버스톤 v3 영상 재생"><span class="vid-thumb"><img src="videos/holy-humberstone-v3.jpg" alt="홀리험버스톤 v3 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:51</span></span><span class="vid-name"><b>홀리험버스톤</b>v3</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-ab-hybrid-v2.mp4" aria-label="커피피로 A·B 혼합 하이브리드 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-ab-hybrid-v2.jpg" alt="커피피로 A·B 혼합 하이브리드 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>A·B 혼합 하이브리드</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-a-3d-science-v2.mp4" aria-label="커피피로 A안 3D 과학 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-a-3d-science-v2.jpg" alt="커피피로 A안 3D 과학 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>A안 3D 과학</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-b-editorial-v2.mp4" aria-label="커피피로 B안 실사 에디토리얼 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-b-editorial-v2.jpg" alt="커피피로 B안 실사 에디토리얼 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>B안 실사 에디토리얼</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-boyfriend-v1.mp4" aria-label="헤이데일리 NMNC 남친 역전 v1 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-boyfriend-v1.jpg" alt="헤이데일리 NMNC 남친 역전 v1 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:57</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>남친 역전 v1</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-unboxing-v2.mp4" aria-label="헤이데일리 NMNC 택배깡 v2 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-unboxing-v2.jpg" alt="헤이데일리 NMNC 택배깡 v2 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:24</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>택배깡 v2</span></button></div><div class="cap">// 이 환경으로 만든 세로형 숏폼 광고 시안 — 썸네일을 누르면 재생돼요 · A안·B안·혼합안으로 나눠 버전별로 관리</div></div>
 
   <div class="props">
     <div class="key">기간</div><div class="val">2026.11 — 현재 <span class="pill">개인 프로젝트</span></div>
@@ -2561,4 +2589,37 @@ gsap.utils.toArray('section[id]').forEach(sec => {
 
 
 
+<script>
+(function(){
+  const box = document.getElementById('video-lightbox');
+  const video = box.querySelector('video');
+  function openVideo(src, poster){
+    video.poster = poster || '';
+    video.src = src;
+    box.classList.add('open');
+    box.setAttribute('aria-hidden','false');
+    const p = video.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+  function closeVideo(){
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden','true');
+  }
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-video]');
+    if (!card) return;
+    e.preventDefault();
+    const img = card.querySelector('img');
+    openVideo(card.getAttribute('data-video'), img ? img.getAttribute('src') : '');
+  });
+  box.querySelector('.vlb-close').addEventListener('click', closeVideo);
+  box.addEventListener('click', (e) => { if (e.target === box) closeVideo(); });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && box.classList.contains('open')) { e.stopImmediatePropagation(); closeVideo(); }
+  }, true);
+})();
+</script>
 </body></html>
