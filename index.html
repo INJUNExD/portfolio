@@ -693,10 +693,17 @@ section { padding: 140px 56px; position: relative; }
 <style>
 
 
+#doc-modal table.src-flow { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 14px; line-height: 1.55; }
+#doc-modal table.src-flow th { text-align: left; font-weight: 700; color: var(--text-secondary); font-size: 12px; letter-spacing: .04em; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+#doc-modal table.src-flow td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text-primary); word-break: keep-all; }
+#doc-modal table.src-flow td:first-child { color: var(--text-secondary); width: 44%; }
+#doc-modal table.src-flow td:last-child { font-weight: 700; }
+@media (max-width: 640px) { #doc-modal table.src-flow, #doc-modal table.src-flow tbody, #doc-modal table.src-flow tr, #doc-modal table.src-flow td { display: block; width: auto !important; } #doc-modal table.src-flow thead { display: none; } #doc-modal table.src-flow tr { border-bottom: 1px solid var(--border); padding: 8px 0; } #doc-modal table.src-flow td { border: 0; padding: 4px 0; } }
+.side-project-lead { margin: -8px 0 28px; color: var(--text-secondary); font-size: 16px; line-height: 1.6; word-break: keep-all; }
 /* ====== VIDEO GRID + LIGHTBOX ====== */
 #doc-modal .vid-block { margin: 20px 0; border: 1px solid var(--border); background: var(--bg-card); }
-#doc-modal .vid-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; padding: 16px; }
-@media (max-width: 900px) { #doc-modal .vid-grid { grid-template-columns: repeat(4, 1fr); } }
+#doc-modal .vid-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px; }
+
 @media (max-width: 560px) { #doc-modal .vid-grid { grid-template-columns: repeat(2, 1fr); } }
 #doc-modal .vid-block .cap { padding: 10px 14px; font-size: 12px; color: var(--text-secondary); border-top: 1px solid var(--border); font-family: ui-monospace, SFMono-Regular, monospace; letter-spacing: 0.04em; }
 .vid-card { all: unset; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
@@ -1379,6 +1386,7 @@ section { padding: 140px 56px; position: relative; }
   <div class="side-project-block" aria-labelledby="ai-in-practice">
     <div class="side-project-kicker">AI IN PRACTICE</div>
     <h3 class="side-project-title" id="ai-in-practice">AI 활용 사례<span class="accent">.</span></h3>
+    <p class="side-project-lead">실무에서 반복되거나 막히는 일을 그때그때 직접 도구로 만들어 풀어 왔습니다.</p>
     <ul class="ai-list">
       <li><a class="ai-row" href="companies/marketingoperator.html">
         <span class="no">01</span>
@@ -1399,6 +1407,11 @@ section { padding: 140px 56px; position: relative; }
         <span class="no">04</span>
         <span><h4>동영상 편집 자동화</h4><span class="desc">클로드 코드로 꾸린 무료 영상 편집 환경 — 컷 편집·자막부터 모션그래픽까지</span></span>
         <span class="tag">영상 · 워크플로</span><span class="go">↗</span>
+      </a></li>
+      <li><a class="ai-row" href="companies/scriptfactory.html">
+        <span class="no">05</span>
+        <span><h4>스크립트 공장</h4><span class="desc">커뮤니티 인기글에서 사람들이 지금 꽂힌 고민을 찾아 숏폼 광고 대본으로 만들고, 광고 심의 기준에 맞춰 신호등 색으로 걸러 주는 도구</span></span>
+        <span class="tag">광고 · 자동화</span><span class="go">↗</span>
       </a></li>
     </ul>
   </div>
@@ -1926,7 +1939,7 @@ gsap.utils.toArray('section[id]').forEach(sec => {
   <h1 class="doc-title">동영상 편집 자동화</h1>
   <p class="doc-sub">클로드 코드로 꾸린 무료 영상 편집 환경 — 컷 편집·자막부터 모션그래픽까지</p>
 
-  <div class="vid-block"><div class="vid-grid"><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-ad-v1.mp4" aria-label="헤이데일리 NMNC 광고 v1 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-ad-v1.jpg" alt="헤이데일리 NMNC 광고 v1 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:15</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>광고 v1</span></button><button type="button" class="vid-card" data-video="videos/holy-humberstone-v3.mp4" aria-label="홀리험버스톤 v3 영상 재생"><span class="vid-thumb"><img src="videos/holy-humberstone-v3.jpg" alt="홀리험버스톤 v3 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:51</span></span><span class="vid-name"><b>홀리험버스톤</b>v3</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-ab-hybrid-v2.mp4" aria-label="커피피로 A·B 혼합 하이브리드 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-ab-hybrid-v2.jpg" alt="커피피로 A·B 혼합 하이브리드 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>A·B 혼합 하이브리드</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-a-3d-science-v2.mp4" aria-label="커피피로 A안 3D 과학 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-a-3d-science-v2.jpg" alt="커피피로 A안 3D 과학 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>A안 3D 과학</span></button><button type="button" class="vid-card" data-video="videos/coffeepiro-b-editorial-v2.mp4" aria-label="커피피로 B안 실사 에디토리얼 영상 재생"><span class="vid-thumb"><img src="videos/coffeepiro-b-editorial-v2.jpg" alt="커피피로 B안 실사 에디토리얼 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:42</span></span><span class="vid-name"><b>커피피로</b>B안 실사 에디토리얼</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-boyfriend-v1.mp4" aria-label="헤이데일리 NMNC 남친 역전 v1 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-boyfriend-v1.jpg" alt="헤이데일리 NMNC 남친 역전 v1 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:57</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>남친 역전 v1</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-unboxing-v2.mp4" aria-label="헤이데일리 NMNC 택배깡 v2 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-unboxing-v2.jpg" alt="헤이데일리 NMNC 택배깡 v2 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:24</span></span><span class="vid-name"><b>헤이데일리 NMNC</b>택배깡 v2</span></button></div><div class="cap">// 이 환경으로 만든 세로형 숏폼 광고 시안 — 썸네일을 누르면 재생돼요 · A안·B안·혼합안으로 나눠 버전별로 관리</div></div>
+  <div class="vid-block"><div class="vid-grid"><button type="button" class="vid-card" data-video="videos/mori-matcha-ugc-v1.mp4" aria-label="MORI 리퀴드 말차 UGC형 v1 · 가상 브랜드 영상 재생"><span class="vid-thumb"><img src="videos/mori-matcha-ugc-v1.jpg" alt="MORI 리퀴드 말차 UGC형 v1 · 가상 브랜드 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:32</span></span><span class="vid-name"><b>MORI 리퀴드 말차</b>UGC형 v1 · 가상 브랜드</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-cf-v2.mp4" aria-label="헤이데일리 NMN-C CF v2 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-cf-v2.jpg" alt="헤이데일리 NMN-C CF v2 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:13</span></span><span class="vid-name"><b>헤이데일리 NMN-C</b>CF v2</span></button><button type="button" class="vid-card" data-video="videos/heydaily-nmnc-ad-v1.mp4" aria-label="헤이데일리 NMN-C 광고 v1 영상 재생"><span class="vid-thumb"><img src="videos/heydaily-nmnc-ad-v1.jpg" alt="헤이데일리 NMN-C 광고 v1 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:15</span></span><span class="vid-name"><b>헤이데일리 NMN-C</b>광고 v1</span></button><button type="button" class="vid-card" data-video="videos/holy-humberstone-v3.mp4" aria-label="홀리험버스톤 v3 영상 재생"><span class="vid-thumb"><img src="videos/holy-humberstone-v3.jpg" alt="홀리험버스톤 v3 숏폼 광고 첫 장면" loading="lazy"><span class="vid-play" aria-hidden="true">▶</span><span class="vid-dur">0:51</span></span><span class="vid-name"><b>홀리험버스톤</b>v3</span></button></div><div class="cap">// 이 환경으로 만든 세로형 숏폼 광고 시안 — 썸네일을 누르면 재생돼요 · UGC형·CF형 등 형식을 바꿔 가며 제작</div></div>
 
   <div class="props">
     <div class="key">기간</div><div class="val">2026.11 — 현재 <span class="pill">개인 프로젝트</span></div>
@@ -1950,6 +1963,72 @@ gsap.utils.toArray('section[id]').forEach(sec => {
 
   <div class="page-nav">
     <a href="#" data-open-doc="jobradar" class="prev"><span class="step">← 이전</span><span class="ttl">채용 레이더</span></a>
+    <a href="#" data-open-doc="scriptfactory" class="next"><span class="step">다음 →</span><span class="ttl">스크립트 공장</span></a>
+  </div>
+</template>
+
+<template id="doc-scriptfactory">
+  <div class="doc-icon">SF</div>
+  <h1 class="doc-title">스크립트 공장</h1>
+  <p class="doc-sub">커뮤니티 인기글에서 지금 반응이 큰 고민을 찾아 숏폼 광고 대본으로 만들고, 신호등 색으로 걸러 주는 도구</p>
+
+  <div class="img-single"><img src="companies/assets/scriptfactory-green.jpg" alt="스크립트 공장 결과 화면 — 좋음 칸 스크립트 카드 3개, 장면별 화면·자막·내레이션과 문장별 신호등" loading="lazy"><div class="cap">// 🟢 좋음 — 가격 계산·출근길 루틴·가방 털기처럼 효능 없이 생활 상황과 사실만으로 1분을 채운 대본</div></div>
+
+  <div class="props">
+    <div class="key">기간</div><div class="val">2026.11 — 현재 <span class="pill">개인 프로젝트</span></div>
+    <div class="key">역할</div><div class="val">기획 · 판정 기준 설계 · 제작</div>
+    <div class="key">도구</div><div class="val"><span class="pill">Python</span><span class="pill">Claude API</span><span class="pill">Gemini API</span><span class="pill">MCP</span></div>
+    <div class="key">방식</div><div class="val"><span class="pill accent">🟢 좋음 · 🟡 중간 · 🟠 고려</span><span class="pill">🔴은 자동 제거</span></div>
+  </div>
+
+  <h2><span class="num">00</span>왜 만들었나</h2>
+  <p>숏폼 광고 대본에서 제일 오래 걸리는 일은 두 가지였습니다. <strong>무엇을 소재로 쓸지</strong> 정하는 일, 그리고 <strong>어디까지 세게 써도 되는지</strong> 가르는 일입니다. 특히 식품·건강 제품은 조금만 선을 넘어도 효능 과장이나 가짜 후기로 단속 대상이 됩니다. 그래서 소재 찾기부터 대본 생성, 심의 기준 검수까지 한 번에 하는 도구를 만들었습니다. 제품 파일만 바꾸면 어떤 제품에도 쓸 수 있고, 아래 화면은 한 건강식품 브랜드로 돌려 본 예시 실행입니다.</p>
+
+  <h2><span class="num">01</span>소재는 커뮤니티 인기글에서</h2>
+  <p>잘 팔리는 훅은 책상 앞이 아니라 <strong>사람들이 이미 반응하고 있는 이야기</strong>에서 나온다고 봤습니다. 그래서 대본을 쓰기 전에 먼저 커뮤니티에서 지금 조회수와 댓글이 몰리는 글부터 모읍니다.</p>
+  <ul>
+    <li>제품 파일에 타깃이 실제로 쓰는 말로 키워드를 정리 (예: 노화, 동안, 늙어 보, 거울, 주름, 단체사진, 동창회, 체력, 나이 들)</li>
+    <li>여러 커뮤니티 인기글을 모아 보여 주는 이슈링크에서 키워드마다 최근 7일 인기글의 제목·댓글 수·조회수를 수집 — 82쿡, 더쿠, 인스티즈, 펨코, 엠팍, 루리웹 등 15곳, 이번 실행에서는 약 230건</li>
+    <li>AI가 글을 읽고 "어떤 고민이 왜 반응이 컸는지"와 말투·밈 패턴, 감정 트리거로 정리 — 원문 문장은 옮기지 않고 작성자 정보도 버림</li>
+    <li>질병·수술·치료 이야기(예: 수술 후 노화, 역노화 치료제 임상)는 광고 소재에서 빼고, 키워드만 겹친 엉뚱한 글("2년 동안 영업 안 한 식당" 같은)도 걸러냄</li>
+  </ul>
+  <table class="src-flow">
+    <thead><tr><th>커뮤니티에서 반응이 컸던 글</th><th>뽑아낸 고민</th><th>만든 훅</th></tr></thead>
+    <tbody>
+      <tr><td>82쿡 "거울로 보는 나와 셀카 나 차이" · 펨코 "와 잠자고 일어나서 거울봤는데"</td><td>아침 거울 속 낯선 내 얼굴</td><td>🟠 아침 거울 보고 '누구세요?' 해 본 사람</td></tr>
+      <tr><td>인스티즈 "30살 조금 넘으니까 노화 관리 유무차이가 이렇게 크다니…" · 단체사진 관련 글</td><td>또래와 나란히 찍힌 사진 속 비교</td><td>🟠 동창 단톡에 사진 올라옴. 나만 이모임</td></tr>
+      <tr><td>인스티즈 "노화 최대한 늦추는 방법 뭐가 있을까" · 저속노화 화제</td><td>요즘 다들 챙긴다는 관리법이 궁금함</td><td>🟡 NMN, 요즘 왜 자꾸 보이지?</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">02</span>구성</h2>
+  <ul>
+    <li>제품 파일에 식약처 인정 기능성 문구, 확인된 사실, 가격·행사, 쓰면 안 되는 문구를 정리 — 쇼핑몰 주소만 넣으면 자동으로 초안 생성</li>
+    <li>포맷 10종(가격 계산형, 출근길 브이로그, 카톡 상황극, 언박싱 등)과 훅 6종을 섞어 한쪽으로 쏠리지 않게 생성</li>
+    <li>대본은 장면별 초·화면 종류·자막·내레이션으로 나뉜 JSON으로 저장돼 영상 제작 단계로 바로 넘어감</li>
+  </ul>
+
+  <h2><span class="num">03</span>판정 기준</h2>
+  <p>단어가 아니라 <strong>영상 전체를 본 소비자가 받는 인상</strong>으로 판정합니다. 문장마다 색을 매기고, 🔴은 고친 문장을 제안하거나 장면을 지웁니다.</p>
+  <ul>
+    <li>🔴 질병 예방·치료, 의약품 오인("먹는 ○○"), 기간+효과·비포애프터, 가짜 후기, AI 전문가 추천, 비방 — 어느 칸에도 남기지 않음</li>
+    <li>🟡 노화·체중 고민 공감 훅, 성분 이름 사실 — 훅 다음에 "먹으면 해결"로 잇지 않는 조건</li>
+    <li>🟠 🟡 규칙 안에서 감정 자극을 최대로 올린 대본 — 카드마다 "아슬아슬한 지점"을 1~3개 표시해 사람이 판단</li>
+    <li>🟢 가격·행사, 섭취 편의, 제조·원료 사실, 루틴·상황 유머 — 바로 사용 가능</li>
+  </ul>
+
+  <div class="img-single"><img src="companies/assets/scriptfactory-orange.jpg" alt="스크립트 공장 결과 화면 — 중간·고려 칸 스크립트 카드와 아슬아슬 지점 경고" loading="lazy"><div class="cap">// 🟡 중간 · 🟠 고려 — 고려 칸은 효과 암시로 읽힐 수 있는 지점을 카드 위에 따로 경고</div></div>
+
+  <h2><span class="num">04</span>누구나 쓰게</h2>
+  <ul>
+    <li>제미나이 무료 키, 클로드 API, 클로드 데스크톱 앱 연결(MCP) 세 가지 방식으로 실행</li>
+    <li>칸별 개수를 정해 한 번에 생성하고, 결과 화면에서 색깔별로 걸러 대본·JSON을 복사</li>
+    <li>사용설명서를 함께 만들어 비개발자도 설치부터 실행까지 따라 할 수 있게 구성</li>
+  </ul>
+  <p>이 검수는 1차 필터이고, 실제 집행 전에는 담당자와 전문가 확인을 거치는 것을 전제로 설계했습니다.</p>
+
+  <div class="page-nav">
+    <a href="#" data-open-doc="videoedit" class="prev"><span class="step">← 이전</span><span class="ttl">동영상 편집 자동화</span></a>
     <a href="#" data-close-doc="1" class="next"><span class="step">Home →</span><span class="ttl">Portfolio</span></a>
   </div>
 </template>
